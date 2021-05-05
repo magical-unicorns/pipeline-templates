@@ -6,12 +6,12 @@ on:
 
 jobs:
   deploy:
-    if: "!github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
-    - name: Check status
-      run: echo ${{ github.event }}
-    - name: Deploy
+    - name: Deploy Pre-release
+      if: "github.event.release.prerelease"
+      run: echo 'We did a pre-release'
+
+    - name: Deploy Prod-Release
+      if: "!github.event.release.prerelease"
       run: echo 'Deploy'
-    - name: Post Deploy
-      run: echo ${{ github.event_name }}
