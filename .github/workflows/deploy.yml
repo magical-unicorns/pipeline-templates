@@ -1,5 +1,4 @@
 name: Deploy
-environment: production
 
 on:
   release:
@@ -9,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: Deploy Pre-release
       # This checks the state of the "pre-release" checkbox when you publish a release
