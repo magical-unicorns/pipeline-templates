@@ -2,13 +2,18 @@ name: Deploy
 
 on:
   release:
+  # Only works on first publish. Edits are not captured.
     types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://github.com
     steps:
     - name: Deploy Pre-release
+      # This checks the state of the "pre-release" checkbox when you publish a release
       if: "github.event.release.prerelease"
       run: echo 'We did a pre-release'
 
