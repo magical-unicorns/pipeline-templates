@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: production
+      url: https://github.com
     steps:
     - name: Deploy Pre-release
       # This checks the state of the "pre-release" checkbox when you publish a release
