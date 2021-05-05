@@ -1,17 +1,17 @@
 name: Deploy
 
 on:
-
-  push:
-    branches: [ master ]
+  release:
+    types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Check status
-      run: echo 'Check if ready for deploy'
-    - name: Deploy
+    - name: Deploy Pre-release
+      if: "github.event.release.prerelease"
+      run: echo 'We did a pre-release'
+
+    - name: Deploy Prod-Release
+      if: "!github.event.release.prerelease"
       run: echo 'Deploy'
-    - name: Post Deploy
-      run: echo 'Post deploy checks'
